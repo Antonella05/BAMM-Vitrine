@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BAMM — Démo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF7;color:#0B1F16;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+h1,h2,h3,.big{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.08}
+.eb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#067047;font-weight:700;margin-bottom:14px}
+.g{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.c{background:#fff;border:1px solid #DCE8E0;border-radius:18px;padding:26px}
+.mut{color:#4F665A;line-height:1.6}
+.btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;background:#067047;color:#fff;border:0;font-size:16px;cursor:pointer}
+.btn:hover{background:#0A8F5A}
+.pill{padding:10px 18px;border-radius:999px;border:1px solid #BFD3C7;background:#fff;font-weight:700;font-size:15px;cursor:pointer;color:#0B1F16;font-family:inherit}
+.pill:hover{border-color:#067047}
+.big{font-size:clamp(34px,4.6vw,54px);color:#067047;line-height:1}
+.bar{height:14px;border-radius:7px;background:#E2F5EA;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:7px;transition:width .5s}
+.pulse{animation:p 2s infinite}@keyframes p{to{box-shadow:0 0 0 36px rgba(198,47,37,0)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}.bar i{transition:none}}
+.nl{padding:9px 16px;border-radius:999px;text-decoration:none;color:#4F665A;font-weight:700;font-size:15px}.nl:hover{color:#067047}.on{background:#E2F5EA;color:#067047}
+.scr{height:100%;border-radius:31px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:32px 18px 22px;color:#fff}
+.wv i{display:inline-block;width:6px;height:12px;border-radius:3px;background:#fff;margin:0 3px;animation:wv 1s ease-in-out infinite;vertical-align:middle}@keyframes wv{50%{height:46px}}
+.lw{height:8px;border-radius:4px;background:rgba(255,255,255,.3);overflow:hidden;width:100%}.lw i{display:block;height:100%;background:#fff;animation:lw 15s linear forwards}@keyframes lw{from{width:0}to{width:100%}}
+.nd{width:22px;height:22px;border-radius:50%;transition:background .4s}
+@media(prefers-reduced-motion:reduce){.wv i,.lw i{animation:none}}
+</style>
+
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+
+<div style="width:100%;overflow:hidden">
+<div class="w" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;padding-bottom:8px"><a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0B1F16;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px"><svg width="26" height="30" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 7v9c0 8 5 13 12 16 7-3 12-8 12-16V7z" fill="none" stroke="#067047" stroke-width="3"/><path d="m9 17 5 5 8-9" fill="none" stroke="#067047" stroke-width="3"/></svg>BAMM</a><nav style="display:flex;gap:2px;flex-wrap:wrap"><a class="nl" href="index.html">Accueil</a><a class="nl" href="probleme.html">Problème</a><a class="nl" href="solution.html">Solution</a><a class="nl on" href="demo.html">Démo</a><a class="nl" href="ia.html">IA</a><a class="nl" href="business.html">Business</a><a class="nl" href="equipe.html">Équipe</a></nav></div>
+<div class="w" style="padding-top:36px;padding-bottom:80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:start">
+<div>
+<div class="eb">Démo complète · scénario de démonstration</div>
+<h2 style="font-size:clamp(28px,3.6vw,42px)">Du premier lancement au signalement, en 6 étapes.</h2>
+<div style="display:flex;gap:8px;margin:22px 0 14px;flex-wrap:wrap"><sc-for list="{{scenarios}}" as="sc" hint-placeholder-count="2"><button class="pill" style="{{sc.style}}" onClick="{{ sc.pick }}">{{sc.label}}</button></sc-for></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px"><sc-for list="{{steps}}" as="s" hint-placeholder-count="6"><button class="pill" style="{{s.style}}" onClick="{{ s.pick }}">{{s.n}}. {{s.short}}</button></sc-for></div>
+<div class="c"><div class="eb">{{ cur.layer }}</div><h3 style="font-size:26px">{{ cur.title }}</h3><p class="mut" style="margin:12px 0 0;font-size:17px">{{ cur.text }}</p></div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+<div style="width:280px;height:540px;border-radius:42px;background:#0B1F16;padding:12px;box-sizing:border-box;box-shadow:0 40px 70px -24px rgba(6,112,71,.5)">
+<sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}"><div class="scr" style="background:#12261C"><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:26px;font-weight:800">Choisis ta langue</div>
+<div style="display:flex;flex-direction:column;gap:8px;width:100%"><sc-for list="{{langs}}" as="l" hint-placeholder-count="5"><button class="pill" style="{{l.style}};width:100%" onClick="{{ l.pick }}">{{l.label}}</button></sc-for></div><span style="color:#8FB3A0;font-size:13px">Premier lancement · une seule fois</span></div></sc-if>
+<sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}"><div class="scr" style="background:#12261C"><div style="color:#8FB3A0;font-size:13px;letter-spacing:.1em">APPEL ENTRANT</div>
+<div><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:28px;font-weight:800">Numéro inconnu</div><div style="color:#CFE3D8;margin-top:8px">se présente : « Agent MTN »</div></div>
+<div style="width:100%;text-align:left;font-size:14px;line-height:2;background:rgba(255,255,255,.07);border-radius:14px;padding:12px 16px"><div><span style="color:#FF8A7A">●</span> Hors liste officielle des opérateurs</div><div><span style="color:#FF8A7A">●</span> Signalé par la communauté</div><div><span style="color:#FF8A7A">●</span> Score du modèle : risque élevé</div></div>
+<div style="color:#8FB3A0;font-size:13px">BAMM analyse l'appel…</div></div></sc-if>
+<sc-if value="{{ s1safe }}" hint-placeholder-val="{{ false }}"><div class="scr" style="background:#0F3A28"><div style="color:#9FD9BB;font-size:13px;letter-spacing:.1em">APPEL ENTRANT</div>
+<div><div style="width:76px;height:76px;border-radius:50%;background:#fff;margin:0 auto 18px;display:flex;align-items:center;justify-content:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#067047" stroke-width="2.6" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></div><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:26px;font-weight:800">Appel sûr</div><div style="color:#CFE3D8;margin-top:8px;line-height:1.5">Numéro de la liste officielle des opérateurs.</div></div>
+<div style="color:#9FD9BB;font-size:14px;line-height:1.5">Risque faible : BAMM reste silencieux. Pas de fausse alerte.</div></div></sc-if>
+<sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}"><div class="scr" style="background:#C62F25"><div style="font-size:13px;letter-spacing:.1em">ALERTE VOCALE · VIBRATION</div>
+<div><div class="wv" aria-hidden="true"><i style="animation-delay:0s"></i><i style="animation-delay:.12s"></i><i style="animation-delay:.24s"></i><i style="animation-delay:.36s"></i><i style="animation-delay:.48s"></i><i style="animation-delay:.6s"></i><i style="animation-delay:.72s"></i></div><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:28px;font-weight:800;margin-top:22px">Appel suspect</div><div style="margin-top:12px;font-size:18px;line-height:1.45">{{ alertText }}</div></div>
+<div style="background:#fff;color:#C62F25;font-weight:700;border-radius:999px;padding:10px 20px;font-size:14px">{{ langLabel }}</div></div></sc-if>
+<sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}"><div class="scr" style="background:#12261C"><div style="color:#8FB3A0;font-size:13px;letter-spacing:.1em">CODE DE TRANSFERT DÉTECTÉ</div>
+<div style="width:100%;text-align:left;font-size:14px;line-height:2;background:rgba(255,255,255,.07);border-radius:14px;padding:12px 16px"><div><span style="color:#FF8A7A">●</span> Un appel suspect vient de se terminer</div><div><span style="color:#FF8A7A">●</span> Destinataire : numéro signalé</div></div>
+<div style="border:3px solid #FF5A4E;color:#FF8A7A;border-radius:16px;padding:14px 26px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:34px;font-weight:800;transform:rotate(-6deg)">BLOQUÉ</div>
+<div style="background:#fff;color:#C62F25;font-weight:700;border-radius:14px;padding:12px 18px;font-size:14px">Avant exécution · 45 000 F CFA protégés</div></div></sc-if>
+<sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}"><div class="scr" style="background:#12261C"><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:24px;font-weight:800">Signalement communautaire</div>
+<div style="display:grid;grid-template-columns:repeat(4,22px);gap:12px"><sc-for list="{{nodes}}" as="n" hint-placeholder-count="8"><div class="nd" style="{{n.style}}"></div></sc-for></div>
+<div style="color:#CFE3D8;line-height:1.5;font-size:15px">{{ reportText }}</div>
+<button class="btn" onClick="{{ report }}" style="width:100%">{{ reportBtn }}</button></div></sc-if>
+<sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}"><div class="scr" style="background:#067047"><div style="font-size:13px;letter-spacing:.1em">MICRO-LEÇON VOCALE · 15 S</div>
+<div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:27px;font-weight:800;line-height:1.15">Ne donne jamais ton code à quelqu'un qui t'appelle.</div>
+<div class="lw"><i></i></div><div style="font-size:14px;color:#CFF5E1">Une leçon courte suit chaque incident bloqué.</div></div></sc-if>
+</div>
+<div style="display:flex;gap:10px"><button class="pill" onClick="{{ prev }}">Précédent</button><sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}"><button class="btn" onClick="{{ next }}" style="padding:11px 24px">Suivant</button></sc-if><sc-if value="{{ atEnd }}" hint-placeholder-val="{{ false }}"><button class="btn" onClick="{{ restart }}" style="padding:11px 24px">Recommencer</button></sc-if></div>
+</div></div>
+<div class="w mut" style="padding-top:28px;padding-bottom:36px;font-size:13px">Sources : GSMA (2025) · TechNext24 (2024) · Tech With Africa (2026) · Lundberg &amp; Lee (2017), SHAP, NeurIPS. · BAMM · AI4Youth · Lomé 2026</div>
+
+</div>
+</template>
+<script src="assets/runtime.js"></script>
+<script>
+
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { step: 0, lang: 'fon', safe: false, reported: false }; }
+renderVals() {
+const on = 'background:#067047;color:#fff;border-color:#067047';
+const st = this.state, safe = st.safe;
+const T = { fon: "Alɔ elɔ nyí ajotɔ́ sín alɔ wɛ. Ma ná mɛdɛbǔ hùn towe ó.", fr: "Cet appel vient d'un arnaqueur. Ne donne ton code à personne.", yo: "[Alerte en yoruba à insérer]", de: "[Alerte en dendi à insérer]", ba: "[Alerte en bariba à insérer]" };
+const LN = { fon: 'Fon', yo: 'Yoruba', de: 'Dendi', ba: 'Bariba', fr: 'Français' };
+const S = [
+['Langue','Premier lancement','La langue est choisie une seule fois. Ensuite, les alertes sont vocales, dans la langue maternelle, et l\'interface repose sur des icônes et des couleurs, pas sur le texte.','Choix de la langue'],
+['Appel','Appel entrant','Le numéro est comparé à la liste officielle des opérateurs et à la base communautaire, puis scoré par le modèle embarqué, hors ligne.','Couche 1 · Détection d\'appels'],
+['Alerte','Alerte immédiate','Au-delà du seuil de risque : écran rouge, vibration et alerte vocale dans la langue de l\'utilisateur, au moment exact de l\'appel.','Couche 1 · Détection d\'appels'],
+['USSD','Interception du code','Avant l\'exécution d\'un code de transfert, BAMM l\'analyse, vérifie le destinataire et bloque si un appel suspect vient de se terminer.','Couche 2 · Interception USSD'],
+['Signalement','Un geste, tout le réseau protégé','Un signalement en un geste ajoute le numéro à la base partagée : il protège immédiatement tous les autres membres.','Couche 3 · Base communautaire'],
+['Leçon','Micro-leçon de 15 secondes','Chaque incident bloqué se termine par une courte leçon vocale : l\'utilisateur apprend sans effort.','Couche 3 · Base communautaire']];
+const last = safe ? 1 : 5;
+const go = i => () => { if (!safe || i <= 1) this.setState({ step: i }); };
+const steps = S.map((x, i) => ({ n: i + 1, short: x[0], style: st.step === i ? on : (safe && i > 1 ? 'opacity:.4' : ''), pick: go(i) }));
+const cur = safe && st.step === 1 ? { layer: 'Couche 1 · Détection d\'appels', title: 'Appel légitime : aucune alerte', text: 'Le modèle ne crie pas au loup : numéro officiel, risque faible. BAMM reste silencieux. C\'est ce qui limite les fausses alertes (17 pour le MLP sur 1 276 appels légitimes).' } : { layer: S[st.step][3], title: S[st.step][1], text: S[st.step][2] };
+const langs = Object.keys(LN).map(id => ({ label: LN[id], style: st.lang === id ? on : '', pick: () => this.setState({ lang: id }) }));
+const nodes = [0,1,2,3,4,5,6,7].map(i => ({ style: 'background:' + (st.reported ? '#4FE3A0' : '#3A5446') + ';transition-delay:' + (i * 0.08) + 's' }));
+return { steps, cur, langs, nodes,
+scenarios: [{ label: 'Appel frauduleux', style: safe ? '' : on, pick: () => this.setState({ safe: false, step: 1 }) }, { label: 'Appel légitime', style: safe ? on : '', pick: () => this.setState({ safe: true, step: 1 }) }],
+s0: st.step === 0, s1: st.step === 1 && !safe, s1safe: st.step === 1 && safe, s2: st.step === 2, s3: st.step === 3, s4: st.step === 4, s5: st.step === 5,
+alertText: T[st.lang], langLabel: 'Alerte vocale · ' + LN[st.lang],
+reportText: st.reported ? 'Merci. Ce numéro protège maintenant tous les membres du réseau.' : 'Un seul geste pour avertir tous les autres utilisateurs.',
+reportBtn: st.reported ? 'Numéro signalé ✓' : 'Signaler ce numéro',
+report: () => this.setState({ reported: true }),
+prev: () => this.setState({ step: Math.max(0, st.step - 1) }),
+next: () => this.setState({ step: Math.min(last, st.step + 1) }),
+restart: () => this.setState({ step: 0, safe: false, reported: false }),
+hasNext: st.step < last, atEnd: st.step === last
+};
+}
+}
+
+boot(Component);
+</script>
+</body>
+</html>

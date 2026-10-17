@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BAMM — Équipe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF7;color:#0B1F16;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+h1,h2,h3,.big{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.08}
+.eb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#067047;font-weight:700;margin-bottom:14px}
+.g{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.c{background:#fff;border:1px solid #DCE8E0;border-radius:18px;padding:26px}
+.mut{color:#4F665A;line-height:1.6}
+.btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;background:#067047;color:#fff;border:0;font-size:16px;cursor:pointer}
+.btn:hover{background:#0A8F5A}
+.pill{padding:10px 18px;border-radius:999px;border:1px solid #BFD3C7;background:#fff;font-weight:700;font-size:15px;cursor:pointer;color:#0B1F16;font-family:inherit}
+.pill:hover{border-color:#067047}
+.big{font-size:clamp(34px,4.6vw,54px);color:#067047;line-height:1}
+.bar{height:14px;border-radius:7px;background:#E2F5EA;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:7px;transition:width .5s}
+.pulse{animation:p 2s infinite}@keyframes p{to{box-shadow:0 0 0 36px rgba(198,47,37,0)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}.bar i{transition:none}}
+.nl{padding:9px 16px;border-radius:999px;text-decoration:none;color:#4F665A;font-weight:700;font-size:15px}.nl:hover{color:#067047}.on{background:#E2F5EA;color:#067047}
+</style>
+
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+
+<div style="width:100%;overflow:hidden">
+<div class="w" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;padding-bottom:8px"><a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0B1F16;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px"><svg width="26" height="30" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 7v9c0 8 5 13 12 16 7-3 12-8 12-16V7z" fill="none" stroke="#067047" stroke-width="3"/><path d="m9 17 5 5 8-9" fill="none" stroke="#067047" stroke-width="3"/></svg>BAMM</a><nav style="display:flex;gap:2px;flex-wrap:wrap"><a class="nl" href="index.html">Accueil</a><a class="nl" href="probleme.html">Problème</a><a class="nl" href="solution.html">Solution</a><a class="nl" href="demo.html">Démo</a><a class="nl" href="ia.html">IA</a><a class="nl" href="business.html">Business</a><a class="nl on" href="equipe.html">Équipe</a></nav></div>
+<div style="background:#062B1C;color:#fff">
+<div class="w" style="padding-top:80px;padding-bottom:80px">
+<div class="eb" style="color:#7DF0BC">Une solution pensée pour s'étendre</div>
+<h2 style="max-width:900px">Parce que la prochaine victime ne devrait pas avoir à comprendre le français pour être protégée.</h2>
+<p style="color:#CFE3D8;line-height:1.6;max-width:760px;margin:22px 0 40px">Au Bénin, BAMM protège les utilisateurs MTN et Moov. Le même principe s'applique à tout opérateur mobile money du continent : MTN MoMo au Ghana, M-Pesa au Kenya, Moov Togo.</p>
+<div class="g" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;color:#CFE3D8;font-size:15px">
+<div><b style="color:#fff">Jean Eude AHITCHEME</b><br>Développement &amp; Cybersécurité</div>
+<div><b style="color:#fff">Esmeralda AKANRO</b><br>Développement &amp; Cybersécurité</div>
+<div><b style="color:#fff">Khaled BACHAROU</b><br>Développement &amp; Marketing Digital</div>
+<div><b style="color:#fff">Antonella TAMADAHO</b><br>Développement &amp; Marketing Digital</div>
+</div></div></div>
+
+<div class="w mut" style="padding-top:28px;padding-bottom:36px;font-size:13px">Sources : GSMA (2025) · TechNext24 (2024) · Tech With Africa (2026) · Lundberg &amp; Lee (2017), SHAP, NeurIPS. · BAMM · AI4Youth · Lomé 2026</div>
+
+</div>
+</template>
+<script src="assets/runtime.js"></script>
+<script>
+
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+
+boot(Component);
+</script>
+</body>
+</html>

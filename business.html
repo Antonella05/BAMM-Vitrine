@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BAMM — Modèle économique</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF7;color:#0B1F16;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+h1,h2,h3,.big{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.08}
+.eb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#067047;font-weight:700;margin-bottom:14px}
+.g{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.c{background:#fff;border:1px solid #DCE8E0;border-radius:18px;padding:26px}
+.mut{color:#4F665A;line-height:1.6}
+.btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;background:#067047;color:#fff;border:0;font-size:16px;cursor:pointer}
+.btn:hover{background:#0A8F5A}
+.pill{padding:10px 18px;border-radius:999px;border:1px solid #BFD3C7;background:#fff;font-weight:700;font-size:15px;cursor:pointer;color:#0B1F16;font-family:inherit}
+.pill:hover{border-color:#067047}
+.big{font-size:clamp(34px,4.6vw,54px);color:#067047;line-height:1}
+.bar{height:14px;border-radius:7px;background:#E2F5EA;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:7px;transition:width .5s}
+.pulse{animation:p 2s infinite}@keyframes p{to{box-shadow:0 0 0 36px rgba(198,47,37,0)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}.bar i{transition:none}}
+.nl{padding:9px 16px;border-radius:999px;text-decoration:none;color:#4F665A;font-weight:700;font-size:15px}.nl:hover{color:#067047}.on{background:#E2F5EA;color:#067047}
+.scr{height:100%;border-radius:31px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:32px 18px 22px;color:#fff}
+.wv i{display:inline-block;width:6px;height:12px;border-radius:3px;background:#fff;margin:0 3px;animation:wv 1s ease-in-out infinite;vertical-align:middle}@keyframes wv{50%{height:46px}}
+.lw{height:8px;border-radius:4px;background:rgba(255,255,255,.3);overflow:hidden;width:100%}.lw i{display:block;height:100%;background:#fff;animation:lw 15s linear forwards}@keyframes lw{from{width:0}to{width:100%}}
+.nd{width:22px;height:22px;border-radius:50%;transition:background .4s}
+@media(prefers-reduced-motion:reduce){.wv i,.lw i{animation:none}}
+</style>
+
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+
+<div style="width:100%;overflow:hidden">
+<div class="w" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;padding-bottom:8px"><a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0B1F16;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px"><svg width="26" height="30" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 7v9c0 8 5 13 12 16 7-3 12-8 12-16V7z" fill="none" stroke="#067047" stroke-width="3"/><path d="m9 17 5 5 8-9" fill="none" stroke="#067047" stroke-width="3"/></svg>BAMM</a><nav style="display:flex;gap:2px;flex-wrap:wrap"><a class="nl" href="index.html">Accueil</a><a class="nl" href="probleme.html">Problème</a><a class="nl" href="solution.html">Solution</a><a class="nl" href="demo.html">Démo</a><a class="nl" href="ia.html">IA</a><a class="nl on" href="business.html">Business</a><a class="nl" href="equipe.html">Équipe</a></nav></div>
+<div class="w" style="padding-top:56px;padding-bottom:48px"><div class="eb">Modèle économique</div>
+<h2 style="max-width:860px">Gratuit pour l'utilisateur. Financé par ceux qui ont intérêt à réduire la fraude.</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:40px">
+<div class="c"><div class="eb">Utilisateurs</div><h3 style="font-size:21px">Protection gratuite</h3><p class="mut" style="margin:10px 0 0">5 langues, hors ligne, sans abonnement : la cible ne paie pas pour être protégée.</p></div><div class="mut" style="font-size:32px;align-self:center;text-align:center">→</div>
+<div class="c" style="background:#E2F5EA;border-color:#067047"><div class="eb">BAMM</div><h3 style="font-size:21px">Détecte, bloque, apprend</h3><p class="mut" style="margin:10px 0 0">Chaque signalement enrichit la base communautaire.</p></div><div class="mut" style="font-size:32px;align-self:center;text-align:center">→</div>
+<div class="c"><div class="eb">Partenaires</div><h3 style="font-size:21px">Opérateurs &amp; institutions</h3><p class="mut" style="margin:10px 0 0">Ils financent le service qui réduit leurs pertes et renforce la confiance.</p></div></div></div>
+<div class="w" style="padding-bottom:56px"><div class="eb">Trois sources de revenus</div><div class="g"><div class="c"><h3 style="font-size:21px">1. Licences opérateurs</h3><p class="mut" style="margin:10px 0 0">MTN, Moov : intégrer la base communautaire et les signaux de risque BAMM à leurs outils anti-fraude, aujourd'hui des dashboards techniques en anglais qui détectent après l'attaque.</p></div><div class="c"><h3 style="font-size:21px">2. Partenariats &amp; financements</h3><p class="mut" style="margin:10px 0 0">Inclusion financière et numérique, langues locales : bailleurs, ONG et régulateurs ont intérêt à protéger les utilisateurs que personne ne protège aujourd'hui.</p></div><div class="c"><h3 style="font-size:21px">3. Tendances de fraude anonymisées</h3><p class="mut" style="margin:10px 0 0">Rapports agrégés sur les vecteurs d'attaque (vishing, USSD) pour les opérateurs et les autorités. Aucune donnée personnelle.</p></div></div></div>
+<div class="w" style="padding-bottom:56px"><div class="eb">Pourquoi le modèle tient</div><div class="g"><div class="c"><h3 style="font-size:21px">Effet réseau</h3><p class="mut" style="margin:10px 0 0">Chaque numéro signalé protège tous les autres membres : plus il y a d'utilisateurs, plus la base vaut pour les opérateurs.</p></div><div class="c"><h3 style="font-size:21px">Coût d'exploitation faible</h3><p class="mut" style="margin:10px 0 0">Modèle de 19,3 Ko embarqué qui tourne hors ligne, et composants open source.</p></div><div class="c"><h3 style="font-size:21px">Adoption par la confiance</h3><p class="mut" style="margin:10px 0 0">Une alerte dans sa langue maternelle est comprise et suivie, c'est ce qui crée l'usage.</p></div></div></div>
+<div class="w" style="padding-bottom:88px"><div class="eb">Déploiement</div><div class="g">
+<div class="c"><div class="big" style="color:#C9E3D4">1</div><h3 style="font-size:21px;margin-top:8px">Bénin</h3><p class="mut" style="margin:8px 0 0">Utilisateurs MTN et Moov.</p></div>
+<div class="c"><div class="big" style="color:#C9E3D4">2</div><h3 style="font-size:21px;margin-top:8px">Région</h3><p class="mut" style="margin:8px 0 0">Moov Togo et voisins.</p></div>
+<div class="c"><div class="big" style="color:#C9E3D4">3</div><h3 style="font-size:21px;margin-top:8px">Continent</h3><p class="mut" style="margin:8px 0 0">MTN MoMo au Ghana, M-Pesa au Kenya.</p></div></div></div>
+<div class="w mut" style="padding-top:28px;padding-bottom:36px;font-size:13px">Sources : GSMA (2025) · TechNext24 (2024) · Tech With Africa (2026) · Lundberg &amp; Lee (2017), SHAP, NeurIPS. · BAMM · AI4Youth · Lomé 2026</div>
+
+</div>
+</template>
+<script src="assets/runtime.js"></script>
+<script>
+
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+
+boot(Component);
+</script>
+</body>
+</html>
