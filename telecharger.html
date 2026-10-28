@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BAMM — Télécharger l'application</title>
+<meta name="description" content="Téléchargez l'application Android BAMM (APK) : protection contre les appels d'arnaqueurs et les codes USSD frauduleux, hors ligne, en langues locales.">
+<meta name="theme-color" content="#06231a">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.dl-grid { display: grid; grid-template-columns: 1fr 460px; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 120px; }
+@media (max-width: 960px) { .dl-grid { grid-template-columns: 1fr; padding-top: 48px; } }
+.qr-row { display: flex; gap: 22px; align-items: center; margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line); }
+@media (max-width: 600px), (pointer: coarse) { .qr-row { display: none !important; } }
+@media (max-width: 480px) { .dl-card { padding: 24px; } .dl-meta { grid-template-columns: 1fr; } }
+.perm { display: flex; gap: 16px; align-items: flex-start; }
+.perm .icon { margin: 0; flex: none; width: 44px; height: 44px; border-radius: 12px; }
+.perm .icon svg { width: 22px; height: 22px; }
+.perm p { margin-top: 4px; }
+</style>
+</head>
+<body data-page="telecharger">
+<header data-nav></header>
+
+<main>
+<section class="hero dark">
+  <div class="wrap dl-grid">
+    <div>
+      <div class="eyebrow">Application Android</div>
+      <h1 style="font-size:clamp(38px,5.4vw,66px)">Installez le bouclier sur votre téléphone.</h1>
+      <p class="lead" style="margin-top:24px">BAMM détecte les appels d'arnaqueurs, bloque les codes de transfert dictés au téléphone et vous alerte de vive voix. Le modèle d'IA tourne dans le téléphone : pas besoin d'Internet pour être protégé.</p>
+      <div class="hero-meta">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Gratuit, sans publicité</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Aucun compte à créer</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Code source ouvert</span>
+      </div>
+    </div>
+
+    <div class="dl-card">
+      <div class="dl-head">
+        <div class="app-icon"><svg width="40" height="40" viewBox="0 0 32 32"><path d="M16 4 6 8.5v7c0 6.6 4.2 10.8 10 13.2 5.8-2.4 10-6.6 10-13.2v-7z" fill="#fff"/><path d="m11 16 3.6 3.6 6.6-7" fill="none" stroke="#0a7a4f" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h3 style="font-size:26px">BAMM</h3>
+          <div class="muted small">Bouclier Anti-fraude Mobile Money</div>
+        </div>
+      </div>
+      <a class="btn btn-primary btn-lg" data-apk="href" href="downloads/BAMM-1.0.0.apk" download style="width:100%">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg>
+        Télécharger l'APK
+      </a>
+      <div class="dl-meta">
+        <div><b>v<span data-apk="version"></span></b><span>Version</span></div>
+        <div><b data-apk="size"></b><span>Taille</span></div>
+        <div><b>Android 8+</b><span>Compatibilité</span></div>
+      </div>
+      <div class="qr-row">
+        <div class="qr" id="qr" aria-label="QR code de téléchargement"></div>
+        <div>
+          <b>Sur ordinateur ?</b>
+          <p class="muted small" style="margin-top:6px">Scannez ce code avec l'appareil photo de votre téléphone Android pour télécharger l'application directement.</p>
+        </div>
+      </div>
+      <details style="margin-top:18px">
+        <summary class="small muted" style="cursor:pointer">Empreinte SHA-256 du fichier</summary>
+        <div class="hash" data-apk="sha256"></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2" style="align-items:start">
+    <div class="reveal">
+      <div class="eyebrow">Installation</div>
+      <h2>Quatre étapes, deux minutes.</h2>
+      <p class="lead" style="margin-top:18px">BAMM n'est pas encore sur le Play Store : Android vous demandera d'autoriser l'installation depuis votre navigateur. C'est normal pour une application téléchargée directement.</p>
+    </div>
+    <ol class="install-steps reveal">
+      <li><b>Téléchargez l'APK</b><span class="muted">Depuis ce site, avec le bouton ci-dessus ou le QR code.</span></li>
+      <li><b>Ouvrez le fichier</b><span class="muted">Dans la notification de téléchargement, ou dans l'application « Fichiers ».</span></li>
+      <li><b>Autorisez l'installation</b><span class="muted">Si Android le demande : Paramètres → « Autoriser cette source », puis revenez en arrière.</span></li>
+      <li><b>Choisissez votre langue et activez les protections</b><span class="muted">L'écran d'accueil liste les autorisations : touchez chaque ligne orange jusqu'à ce que tout soit vert.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Autorisations</div>
+      <h2>Ce que BAMM demande, et pourquoi.</h2>
+      <p class="lead">Chaque autorisation sert une couche de protection. BAMM ne lit ni vos SMS, ni vos contacts, ni le contenu de vos appels.</p>
+    </div>
+    <div class="grid">
+      <div class="card perm reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><div><h3 style="font-size:18px">Filtrage des appels</h3><p>Voir le numéro qui appelle pour le vérifier. L'appel n'est jamais rejeté à votre place.</p></div></div>
+      <div class="card perm reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 19c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 1c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12-8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><div><h3 style="font-size:18px">Accessibilité</h3><p>Lire uniquement les codes tapés dans le clavier téléphonique, pour bloquer un code de transfert dicté par un arnaqueur.</p></div></div>
+      <div class="card perm reveal"><div class="icon red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 21h22L12 2zm1 16h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></div><div><h3 style="font-size:18px">Affichage par-dessus</h3><p>Montrer l'écran rouge au-dessus de l'appel en cours, au moment où vous en avez besoin.</p></div></div>
+      <div class="card perm reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg></div><div><h3 style="font-size:18px">Internet (facultatif)</h3><p>Partager vos signalements avec la communauté. Sans réseau, ils sont gardés et envoyés plus tard.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:860px">
+    <div class="section-head reveal"><div class="eyebrow">Questions fréquentes</div><h2>Avant d'installer.</h2></div>
+    <details class="faq reveal"><summary>Android affiche « Application inconnue » ou Play Protect m'avertit.</summary><p>C'est l'avertissement standard pour toute application installée hors du Play Store. Vous pouvez vérifier que le fichier est bien le nôtre grâce à son empreinte SHA-256 ci-dessus, et consulter tout le code source sur GitHub.</p></details>
+    <details class="faq reveal"><summary>Faut-il une connexion Internet ?</summary><p>Non pour la protection : la liste officielle, le modèle d'IA et le blocage des codes USSD fonctionnent hors ligne. Internet sert seulement à partager et recevoir les signalements de la communauté.</p></details>
+    <details class="faq reveal"><summary>Quels téléphones sont compatibles ?</summary><p>Les téléphones Android 8 (Oreo) ou plus récents, avec un processeur ARM, c'est-à-dire la quasi-totalité des smartphones vendus au Bénin (Tecno, Infinix, itel, Samsung, Xiaomi…). L'iPhone n'est pas pris en charge.</p></details>
+    <details class="faq reveal"><summary>Les alertes vocales existent-elles dans toutes les langues ?</summary><p>Les textes en fon et en français sont prêts. Les enregistrements par des locuteurs natifs en fon, yoruba, dendi et bariba sont en cours : en attendant, l'alerte vocale est lue en français.</p></details>
+    <details class="faq reveal"><summary>Est-ce une version finale ?</summary><p>C'est la version de démonstration présentée au hackathon AI4Youth 2026. Elle contient les trois couches de protection et un écran de démonstration pour tester le scénario d'arnaque sans risque.</p></details>
+  </div>
+</section>
+</main>
+
+<footer data-footer></footer>
+<script src="assets/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  const url = new URL(window.BAMM_APK.url, location.href).href;
+  if (window.QRCode) {
+    new QRCode(document.getElementById('qr'), { text: url, width: 288, height: 288, colorDark: '#06231a', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+  } else {
+    document.querySelector('.qr-row').style.display = 'none';
+  }
+})();
+</script>
+</body>
+</html>

@@ -3,69 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BAMM — Le modèle</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet">
+<title>BAMM — Le modèle IA</title>
+<meta name="description" content="4 modèles comparés pour détecter les appels frauduleux : régression logistique, Random Forest, XGBoost et MLP. Résultats sur 1 500 appels de test, interprétabilité SHAP, export TensorFlow Lite.">
+<meta name="theme-color" content="#06231a">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 <style>
-body{margin:0;background:#F6FAF7;color:#0B1F16;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
-.w{max-width:1100px;margin:0 auto;padding:0 24px;box-sizing:border-box}
-h1,h2,h3,.big{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
-h2{font-size:clamp(28px,4vw,44px);line-height:1.08}
-.eb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#067047;font-weight:700;margin-bottom:14px}
-.g{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.c{background:#fff;border:1px solid #DCE8E0;border-radius:18px;padding:26px}
-.mut{color:#4F665A;line-height:1.6}
-.btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;background:#067047;color:#fff;border:0;font-size:16px;cursor:pointer}
-.btn:hover{background:#0A8F5A}
-.pill{padding:10px 18px;border-radius:999px;border:1px solid #BFD3C7;background:#fff;font-weight:700;font-size:15px;cursor:pointer;color:#0B1F16;font-family:inherit}
-.pill:hover{border-color:#067047}
-.big{font-size:clamp(34px,4.6vw,54px);color:#067047;line-height:1}
-.bar{height:14px;border-radius:7px;background:#E2F5EA;overflow:hidden}
-.bar i{display:block;height:100%;border-radius:7px;transition:width .5s}
-.pulse{animation:p 2s infinite}@keyframes p{to{box-shadow:0 0 0 36px rgba(198,47,37,0)}}
-@media(prefers-reduced-motion:reduce){.pulse{animation:none}.bar i{transition:none}}
-.nl{padding:9px 16px;border-radius:999px;text-decoration:none;color:#4F665A;font-weight:700;font-size:15px}.nl:hover{color:#067047}.on{background:#E2F5EA;color:#067047}
+.pipeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+@media (max-width: 960px) { .pipeline { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 520px) { .pipeline { grid-template-columns: 1fr 1fr; } }
+.pipeline .card { padding: 20px; }
+.pipeline .card p { font-size: 14px; }
+.pipeline h3 { font-size: 18px; }
+.chosen td { font-weight: 700; }
+.shap { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); padding: 16px; box-shadow: var(--shadow); }
 </style>
-
 </head>
-<body>
-<div id="app"></div>
-<template id="tpl">
+<body data-page="ia">
+<header data-nav></header>
 
-<div style="width:100%;overflow:hidden">
-<div class="w" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;padding-bottom:8px"><a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0B1F16;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px"><svg width="26" height="30" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 7v9c0 8 5 13 12 16 7-3 12-8 12-16V7z" fill="none" stroke="#067047" stroke-width="3"/><path d="m9 17 5 5 8-9" fill="none" stroke="#067047" stroke-width="3"/></svg>BAMM</a><nav style="display:flex;gap:2px;flex-wrap:wrap"><a class="nl" href="index.html">Accueil</a><a class="nl" href="probleme.html">Problème</a><a class="nl" href="solution.html">Solution</a><a class="nl" href="demo.html">Démo</a><a class="nl on" href="ia.html">IA</a><a class="nl" href="business.html">Business</a><a class="nl" href="equipe.html">Équipe</a></nav></div>
-<div class="w" id="modele" style="padding-top:48px;padding-bottom:88px">
-<div class="eb">Le modèle</div>
-<h2 style="max-width:760px">4 modèles comparés. Le recall prime.</h2>
-<p class="mut" style="max-width:700px;margin:16px 0 28px">Une fraude ratée coûte plus cher à la victime qu'une alerte de trop. Choisissez un modèle (set de validation : 225 fraudes, 1 276 appels légitimes).</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
-<sc-for list="{{models}}" as="m" hint-placeholder-count="4"><button class="pill" style="{{m.style}}" onClick="{{ m.pick }}">{{m.label}}</button></sc-for>
-</div>
-<div class="g" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-<div class="c"><div class="mut" style="font-size:14px">Fraudes ratées sur 225</div><div class="big" style="margin:6px 0 14px;color:#C2392B">{{ sel.missed }}</div><div class="bar"><i style="width:{{ sel.missedW }}%;background:#C2392B"></i></div><div class="mut" style="font-size:14px;margin-top:14px">Recall : <b style="color:#0B1F16">{{ sel.recall }}</b></div></div>
-<div class="c"><div class="mut" style="font-size:14px">Fausses alertes sur 1 276 appels légitimes</div><div class="big" style="margin:6px 0 14px">{{ sel.fa }}</div><div class="bar"><i style="width:{{ sel.faW }}%;background:#067047"></i></div><div class="mut" style="font-size:14px;margin-top:14px">Precision : <b style="color:#0B1F16">{{ sel.prec }}</b></div></div>
-</div>
-<div class="c" style="margin-top:18px;background:#E2F5EA;border-color:#067047"><b>Retenu : Keras → TFLite</b> · recall 93,3 % en test · 19,3 Ko · fonctionne hors ligne. Chaque alerte est explicable (SHAP) : durée de l'appel, nombre de signalements, USSD composé juste après l'appel.</div>
-</div>
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Le modèle</div>
+    <h1>4 modèles comparés. <span class="hl">Le recall prime.</span></h1>
+    <p class="lead">Une fraude ratée coûte plus cher à la victime qu'une alerte de trop. Tous les modèles sont réglés pour rater le moins de fraudes possible, puis mesurés une seule fois sur 1 500 appels jamais vus.</p>
+  </div>
+</section>
 
-<div class="w mut" style="padding-top:28px;padding-bottom:36px;font-size:13px">Sources : GSMA (2025) · TechNext24 (2024) · Tech With Africa (2026) · Lundberg &amp; Lee (2017), SHAP, NeurIPS. · BAMM · AI4Youth · Lomé 2026</div>
+<!-- ============================================== SELECTEUR -->
+<section style="padding-bottom:88px">
+  <div class="wrap">
+    <div class="pills" role="group" aria-label="Modèle" id="models" style="margin-bottom:22px"></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <div class="card reveal">
+        <div class="muted small">Fraudes ratées sur 225</div>
+        <div class="big-n" id="m-missed" style="color:var(--red)"></div>
+        <div class="meter"><i id="m-missed-bar" style="background:var(--red)"></i></div>
+        <div class="muted small" style="margin-top:14px">Recall : <b style="color:var(--text)" id="m-recall"></b></div>
+      </div>
+      <div class="card reveal">
+        <div class="muted small">Fausses alertes sur 1 275 appels légitimes</div>
+        <div class="big-n" id="m-fa" style="color:var(--green)"></div>
+        <div class="meter"><i id="m-fa-bar" style="background:var(--green)"></i></div>
+        <div class="muted small" style="margin-top:14px">Précision : <b style="color:var(--text)" id="m-prec"></b></div>
+      </div>
+      <div class="card reveal">
+        <div class="muted small">Capacité à séparer fraude et légitime</div>
+        <div class="big-n" id="m-auc"></div>
+        <div class="meter"><i id="m-auc-bar" style="background:var(--ink)"></i></div>
+        <div class="muted small" style="margin-top:14px" id="m-note"></div>
+      </div>
+    </div>
 
-</div>
-</template>
-<script src="assets/runtime.js"></script>
+    <div class="table-scroll reveal" style="margin-top:28px">
+      <table class="compare">
+        <thead><tr><th>Modèle</th><th class="num-cell">Recall</th><th class="num-cell">Précision</th><th class="num-cell">F1</th><th class="num-cell">AUC-ROC</th><th class="num-cell">Fraudes ratées</th><th class="num-cell">Fausses alertes</th></tr></thead>
+        <tbody id="table"></tbody>
+      </table>
+    </div>
+
+    <div class="card card-accent reveal" style="margin-top:20px">
+      <h3>Retenu pour l'application : le réseau de neurones (MLP)</h3>
+      <p>À 0,007 point d'AUC du meilleur modèle, il s'exporte nativement en TensorFlow Lite : <b style="color:var(--text)">7,4 Ko</b>, moins d'une milliseconde par appel, aucun besoin d'Internet. Le fichier embarqué donne <b style="color:var(--text)">exactement les mêmes décisions</b> que le modèle évalué ici, vérifié sur les 1 500 appels de test.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== PIPELINE -->
+<section class="section tint">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">La démarche</div>
+      <h2>Un pipeline complet, documenté cellule par cellule.</h2>
+      <p class="lead">Il n'existe aucun jeu de données public d'appels frauduleux au Bénin. Nous en avons construit un, en calibrant chaque distribution sur des rapports réels et en y mettant volontairement des cas ambigus.</p>
+    </div>
+    <div class="pipeline">
+      <div class="card reveal"><div class="num">1</div><h3>Dataset</h3><p>10 000 appels synthétiques, 15 % de fraude.</p></div>
+      <div class="card reveal"><div class="num">2</div><h3>EDA</h3><p>Distributions, corrélations, déséquilibre 15/85.</p></div>
+      <div class="card reveal"><div class="num">3</div><h3>Prétraitement</h3><p>One-hot, normalisation, split stratifié 70/15/15.</p></div>
+      <div class="card reveal"><div class="num">4</div><h3>Modèles</h3><p>4 modèles, validation croisée 5 plis, critère F2.</p></div>
+      <div class="card reveal"><div class="num">5</div><h3>Évaluation</h3><p>Seuil réglé sur la validation, mesure unique sur le test.</p></div>
+      <div class="card reveal"><div class="num">6</div><h3>Export</h3><p>Deux modèles TFLite : à la sonnerie et après l'appel.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== SHAP -->
+<section class="section">
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <div class="eyebrow">Interprétabilité</div>
+      <h2>Chaque alerte est explicable.</h2>
+      <p class="lead" style="margin-top:18px">Les valeurs SHAP montrent ce qui pousse le modèle vers « fraude » : un numéro qui appelle des dizaines de personnes en une semaine, des signalements de la communauté, un appel de plusieurs minutes, puis un code USSD tapé juste après.</p>
+      <div class="card card-danger" style="margin-top:28px">
+        <h3>Ce que le modèle rate, et qui le rattrape</h3>
+        <p>95 % des fraudes manquées viennent de <b style="color:var(--text)">numéros neufs, jamais signalés</b>. C'est la couche 2 qui les arrête : même un fraudeur inconnu est bloqué au moment où la victime tape le code de transfert.</p>
+      </div>
+    </div>
+    <figure class="shap reveal" style="margin:0">
+      <img src="assets/img/11_shap_beeswarm.png" alt="Graphique SHAP : les variables les plus influentes sont la fréquence d'appels sur 7 jours, le nombre de signalements, la durée de l'appel et le code USSD composé après l'appel." loading="lazy" width="900" height="640">
+      <figcaption class="muted small" style="margin-top:10px">Impact de chaque variable sur le risque (300 appels de test). Rouge = valeur élevée.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section-sm" style="padding-top:0;padding-bottom:104px">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div><h2>Tout est reproductible.</h2><p>Notebook Jupyter, dataset, code de l'application et de l'API sont publics.</p></div>
+      <a class="btn btn-glow btn-lg" href="https://github.com/BAMM-Project/BAMM" target="_blank" rel="noopener">Voir sur GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-footer></footer>
+<script src="assets/site.js"></script>
 <script>
-
-class Component extends DCLogic {
-constructor(props) { super(props); this.state = { model: 'mlp' }; }
-renderVals() {
-const on = 'background:#067047;color:#fff;border-color:#067047';
-const D = [['lr','Logistic Regression',19,74,'91,6 %','73,6 %'],['rf','Random Forest',23,32,'89,8 %','86,3 %'],['xg','XGBoost',20,42,'91,1 %','83,0 %'],['mlp','MLP',33,17,'85,3 %','91,9 %']];
-const models = D.map(([id,label,missed,fa,recall,prec]) => ({ id, label, missed, fa, recall, prec, missedW: Math.round(missed / 33 * 100), faW: Math.round(fa / 74 * 100), style: this.state.model === id ? on : '', pick: () => this.setState({ model: id }) }));
-return { models, sel: models.find(m => m.id === this.state.model) };
-}
-}
-
-boot(Component);
+(function () {
+  // Résultats du notebook (data_science/models/comparison_test.csv) — jeu de test : 225 fraudes, 1 275 légitimes
+  const M = [
+    { id: 'lr', label: 'Régression logistique', recall: 0.893, prec: 0.578, f1: 0.702, auc: 0.966, fn: 24, fp: 147, note: 'Référence linéaire, interprétable.' },
+    { id: 'rf', label: 'Random Forest', recall: 0.942, prec: 0.749, f1: 0.835, auc: 0.983, fn: 13, fp: 71, note: 'Meilleur recall, mais plus de fausses alertes.' },
+    { id: 'xg', label: 'XGBoost', recall: 0.911, prec: 0.844, f1: 0.876, auc: 0.988, fn: 20, fp: 38, note: 'Meilleur compromis global.' },
+    { id: 'mlp', label: 'MLP · retenu', recall: 0.907, prec: 0.773, f1: 0.834, auc: 0.981, fn: 21, fp: 60, note: 'Exporté en TFLite (7,4 Ko) dans l\'app.' },
+  ];
+  const pct = (x) => (x * 100).toFixed(1).replace('.', ',') + ' %';
+  const dec = (x) => x.toFixed(3).replace('.', ',');
+  const maxFn = Math.max(...M.map((m) => m.fn)), maxFp = Math.max(...M.map((m) => m.fp));
+  let sel = 'mlp';
+  const box = document.getElementById('models');
+  M.forEach((m) => {
+    const b = document.createElement('button');
+    b.className = 'pill'; b.dataset.id = m.id; b.textContent = m.label;
+    b.addEventListener('click', () => { sel = m.id; render(); });
+    box.appendChild(b);
+  });
+  document.getElementById('table').innerHTML = M.map((m) => `<tr class="${m.id === 'mlp' ? 'chosen' : ''}">
+    <td${m.id === 'mlp' ? ' class="us"' : ''}>${m.label}</td><td class="num-cell">${pct(m.recall)}</td><td class="num-cell">${pct(m.prec)}</td>
+    <td class="num-cell">${dec(m.f1)}</td><td class="num-cell">${dec(m.auc)}</td><td class="num-cell">${m.fn}</td><td class="num-cell">${m.fp}</td></tr>`).join('');
+  function render() {
+    const m = M.find((x) => x.id === sel);
+    box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.id === sel));
+    document.getElementById('m-missed').textContent = m.fn;
+    document.getElementById('m-missed-bar').style.width = (m.fn / maxFn * 100) + '%';
+    document.getElementById('m-recall').textContent = pct(m.recall);
+    document.getElementById('m-fa').textContent = m.fp;
+    document.getElementById('m-fa-bar').style.width = (m.fp / maxFp * 100) + '%';
+    document.getElementById('m-prec').textContent = pct(m.prec);
+    document.getElementById('m-auc').textContent = dec(m.auc);
+    document.getElementById('m-auc-bar').style.width = ((m.auc - 0.9) / 0.1 * 100) + '%';
+    document.getElementById('m-note').textContent = 'AUC-ROC · ' + m.note;
+  }
+  render();
+})();
 </script>
 </body>
 </html>

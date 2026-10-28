@@ -3,101 +3,211 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BAMM — Accueil</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet">
-<style>
-body{margin:0;background:#F6FAF7;color:#0B1F16;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
-.w{max-width:1100px;margin:0 auto;padding:0 24px;box-sizing:border-box}
-h1,h2,h3,.big{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
-h2{font-size:clamp(28px,4vw,44px);line-height:1.08}
-.eb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#067047;font-weight:700;margin-bottom:14px}
-.g{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.c{background:#fff;border:1px solid #DCE8E0;border-radius:18px;padding:26px}
-.mut{color:#4F665A;line-height:1.6}
-.btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;background:#067047;color:#fff;border:0;font-size:16px;cursor:pointer}
-.btn:hover{background:#0A8F5A}
-.pill{padding:10px 18px;border-radius:999px;border:1px solid #BFD3C7;background:#fff;font-weight:700;font-size:15px;cursor:pointer;color:#0B1F16;font-family:inherit}
-.pill:hover{border-color:#067047}
-.big{font-size:clamp(34px,4.6vw,54px);color:#067047;line-height:1}
-.bar{height:14px;border-radius:7px;background:#E2F5EA;overflow:hidden}
-.bar i{display:block;height:100%;border-radius:7px;transition:width .5s}
-.pulse{animation:p 2s infinite}@keyframes p{to{box-shadow:0 0 0 36px rgba(198,47,37,0)}}
-@media(prefers-reduced-motion:reduce){.pulse{animation:none}.bar i{transition:none}}
-.nl{padding:9px 16px;border-radius:999px;text-decoration:none;color:#4F665A;font-weight:700;font-size:15px}.nl:hover{color:#067047}.on{background:#E2F5EA;color:#067047}
-</style>
-
+<title>BAMM — Bouclier Anti-fraude Mobile Money</title>
+<meta name="description" content="BAMM bloque la fraude mobile money au moment exact de l'attaque : détection des appels d'arnaqueurs, blocage des codes USSD de transfert, alertes vocales en fon, yoruba, dendi, bariba et français.">
+<meta name="theme-color" content="#06231a">
+<meta property="og:title" content="BAMM — Bouclier Anti-fraude Mobile Money">
+<meta property="og:description" content="La fraude mobile money, bloquée au moment exact de l'attaque. Application Android gratuite, hors ligne, en langues locales.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-<div id="app"></div>
-<template id="tpl">
+<body data-page="index">
+<header data-nav></header>
 
-<div style="width:100%;overflow:hidden">
-<div class="w" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;padding-bottom:8px"><a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0B1F16;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px"><svg width="26" height="30" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 7v9c0 8 5 13 12 16 7-3 12-8 12-16V7z" fill="none" stroke="#067047" stroke-width="3"/><path d="m9 17 5 5 8-9" fill="none" stroke="#067047" stroke-width="3"/></svg>BAMM</a><nav style="display:flex;gap:2px;flex-wrap:wrap"><a class="nl on" href="index.html">Accueil</a><a class="nl" href="probleme.html">Problème</a><a class="nl" href="solution.html">Solution</a><a class="nl" href="demo.html">Démo</a><a class="nl" href="ia.html">IA</a><a class="nl" href="business.html">Business</a><a class="nl" href="equipe.html">Équipe</a></nav></div>
-<div class="w" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center;padding-top:40px;padding-bottom:80px">
-<div>
-<div class="eb">AI4Youth · Lomé 2026 · Défi cybersécurité</div>
-<h1 style="font-size:clamp(38px,5.6vw,66px);line-height:1.02">La fraude mobile money, <span style="color:#067047">bloquée</span> au moment exact de l'attaque.</h1>
-<p class="mut" style="font-size:19px;margin:22px 0 30px;max-width:520px">Une application Android qui protège l'utilisateur sur son téléphone, dans sa langue. Essayez : choisissez une langue, puis laissez l'« agent » vous appeler.</p>
-<a class="btn" href="demo.html">Voir la démo complète</a> <a class="btn" href="probleme.html" style="background:#fff;color:#067047;border:1px solid #067047">Comprendre le problème</a>
+<main>
+<!-- ============================================================ HERO -->
+<section class="hero dark">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><b>NOUVEAU</b> L'application Android est disponible</div>
+      <h1>La fraude mobile money, <span class="hl">bloquée</span> au moment exact de l'attaque.</h1>
+      <p class="lead">BAMM protège l'utilisateur sur son téléphone, dans sa langue : il reconnaît l'appel de l'arnaqueur et bloque le code de transfert avant que l'argent ne parte.</p>
+      <div class="actions">
+        <a class="btn btn-glow btn-lg" href="telecharger.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg>Télécharger l'APK</a>
+        <a class="btn btn-ghost btn-lg" href="demo.html">Voir la démo</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Gratuit</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Fonctionne hors ligne</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Android 8 et plus</span>
+      </div>
+    </div>
+
+    <div class="phone-stage">
+      <div class="pills" role="group" aria-label="Langue de l'alerte" id="hero-langs"></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="scr scr-dark on" id="h-call">
+            <div>
+              <div class="tag">APPEL ENTRANT</div>
+            </div>
+            <div>
+              <div class="avatar"><svg width="44" height="44" viewBox="0 0 24 24" fill="#8fb3a0"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+              <div class="title">« Agent MTN »</div>
+              <div class="muted small" style="color:#8fb3a0;margin-top:6px">+229 01 66 77 88 99</div>
+              <p class="msg" style="color:#cfe3d8;margin-top:22px">« Tapez <b>*880*7721*45000#</b> pour mettre à jour votre compte. »</p>
+            </div>
+            <div style="width:100%">
+              <button class="btn btn-light" id="h-type" style="width:100%">Taper le code</button>
+              <div class="small" style="color:#8fb3a0;margin-top:12px">Comme Maman Adjovi, à Dantokpa</div>
+            </div>
+          </div>
+          <div class="scr scr-red" id="h-block">
+            <div class="tag" style="color:#ffe0dc">BAMM · CODE BLOQUÉ</div>
+            <div>
+              <div class="stop"><svg width="52" height="52" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg></div>
+              <p class="msg" id="h-text" style="font-weight:600;font-size:19px"></p>
+              <p class="small" id="h-note" style="color:#ffd9d4;margin-top:10px"></p>
+            </div>
+            <div style="width:100%">
+              <div class="chip-white">45 000 F CFA protégés</div>
+              <button class="pill" id="h-replay" style="width:100%;margin-top:10px;background:transparent;color:#fff;border-color:rgba(255,255,255,.6)">Rejouer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ STATS -->
+<div class="wrap lift">
+  <div class="stats reveal">
+    <div><div class="stat-n">4 Mds $</div><div class="stat-l">de pertes liées à la fraude mobile en Afrique en 2026</div></div>
+    <div><div class="stat-n">90 %</div><div class="stat-l">des opérateurs signalent des fraudes identitaires</div></div>
+    <div><div class="stat-n">90,7 %</div><div class="stat-l">des fraudes détectées par le modèle embarqué (jeu de test)</div></div>
+    <div><div class="stat-n">7,4 Ko</div><div class="stat-l">de modèle IA dans le téléphone, sans Internet</div></div>
+  </div>
 </div>
 
-<div style="display:flex;flex-direction:column;align-items:center;gap:18px">
-<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
-<sc-for list="{{langs}}" as="l" hint-placeholder-count="5"><button class="pill" style="{{l.style}}" onClick="{{ l.pick }}">{{l.label}}</button></sc-for>
-</div>
-<div style="width:280px;height:540px;border-radius:42px;background:#0B1F16;padding:12px;box-sizing:border-box;box-shadow:0 40px 70px -24px rgba(6,112,71,.5)">
-<sc-if value="{{ show0 }}" hint-placeholder-val="{{ true }}">
-<div style="height:100%;border-radius:31px;background:#12261C;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:44px 22px 28px;box-sizing:border-box">
-<div><div style="color:#8FB3A0;font-size:14px;letter-spacing:.1em">APPEL ENTRANT</div><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:30px;font-weight:800;margin-top:10px">« Agent MTN »</div></div>
-<div style="color:#CFE3D8;line-height:1.5;font-size:17px">« Tapez ce code de mise à jour pour garder votre compte. »</div>
-<div style="display:flex;flex-direction:column;gap:12px;width:100%">
-<button class="btn" onClick="{{ typeCode }}" style="width:100%">Taper le code</button>
-<span style="color:#8FB3A0;font-size:13px">Comme Maman Adjovi, à Dantokpa</span>
-</div></div>
-</sc-if>
-<sc-if value="{{ show1 }}" hint-placeholder-val="{{ false }}">
-<div style="height:100%;border-radius:31px;background:#C62F25;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:36px 22px 28px;box-sizing:border-box">
-<div class="pulse" style="width:84px;height:84px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(255,255,255,.6)"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#C62F25" stroke-width="2.4" aria-hidden="true"><path d="M12 3 2 21h20z"/><path d="M12 10v5M12 18v.5"/></svg></div>
-<div><div style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:28px;font-weight:800">Code bloqué</div><div style="margin-top:12px;font-size:18px;line-height:1.45">{{ alertText }}</div></div>
-<div style="width:100%"><div style="background:#fff;color:#C62F25;font-weight:700;border-radius:14px;padding:12px;margin-bottom:12px;font-size:14px">45 000 F CFA protégés</div><button class="pill" onClick="{{ replay }}" style="width:100%;border-color:#fff;background:transparent;color:#fff">Rejouer</button></div>
-</div>
-</sc-if>
-</div>
-</div>
-</div>
+<!-- ============================================================ STORY -->
+<section class="section">
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <div class="eyebrow">Le problème</div>
+      <h2>Trois minutes au téléphone. Une semaine de recette envolée.</h2>
+    </div>
+    <div class="reveal">
+      <p class="quote">Un homme appelle Maman Adjovi, vendeuse à Dantokpa. Il dit être agent MTN et lui dicte un code « de mise à jour ». Elle le tape : <b>45 000 F CFA disparaissent.</b></p>
+      <p class="muted" style="margin-top:18px">Elle ne parle pas français et n'a jamais vu la vidéo de sensibilisation. Aucune solution n'était conçue pour elle. <a href="probleme.html" style="color:var(--green);font-weight:600">Comprendre le problème →</a></p>
+    </div>
+  </div>
+</section>
 
-<div style="background:#fff;border-top:1px solid #DCE8E0;border-bottom:1px solid #DCE8E0">
-<div class="w g" style="padding-top:44px;padding-bottom:44px;gap:28px">
-<div><div class="big">4 Mds $</div><div class="mut">de pertes en Afrique liées à la fraude mobile en 2026</div></div>
-<div><div class="big">90 %</div><div class="mut">des opérateurs signalent des fraudes identitaires</div></div>
-<div><div class="big">93 %</div><div class="mut">de fraudes détectées en test</div></div>
-<div><div class="big">19,3 Ko</div><div class="mut">modèle embarqué, hors ligne</div></div>
-</div></div>
+<!-- ============================================================ LAYERS -->
+<section class="section dark" style="padding-top:96px">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">La solution</div>
+      <h2>Trois couches de protection, <span class="hl">pendant</span> l'attaque.</h2>
+      <p class="lead">Les campagnes de sensibilisation agissent avant l'attaque, les outils des opérateurs après. BAMM agit pendant, sur le téléphone de la victime.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <h3>1 · Détection d'appels</h3>
+        <p>Liste officielle des opérateurs, base communautaire puis modèle d'IA embarqué. Si le risque est élevé : écran rouge, vibration et alerte vocale.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg></div>
+        <h3>2 · Blocage des codes USSD</h3>
+        <p>Un code de transfert comme <b style="color:#fff">*880*7721*45000#</b> tapé juste après un appel suspect est bloqué avant d'être envoyé.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <h3>3 · Base communautaire</h3>
+        <p>Un signalement en un geste protège tous les autres utilisateurs. Une micro-leçon vocale de 15 secondes suit chaque incident.</p>
+      </div>
+    </div>
+    <div class="actions" style="margin-top:40px">
+      <a class="btn btn-light" href="solution.html">Détails de la solution</a>
+      <a class="btn btn-ghost" href="demo.html">Démo pas à pas</a>
+    </div>
+  </div>
+</section>
 
-<div class="w" style="padding-top:64px;padding-bottom:80px"><div class="g">
-<a class="c" href="ia.html" style="text-decoration:none;color:inherit"><div class="eb">Le modèle</div><h3 style="font-size:22px">93 % des fraudes détectées</h3><p class="mut" style="margin:8px 0 0">Comparez les 4 modèles en direct →</p></a>
-<a class="c" href="solution.html" style="text-decoration:none;color:inherit"><div class="eb">La solution</div><h3 style="font-size:22px">Pendant l'attaque</h3><p class="mut" style="margin:8px 0 0">Problème, 3 couches de protection, 5 langues →</p></a>
-<a class="c" href="equipe.html" style="text-decoration:none;color:inherit"><div class="eb">L'équipe</div><h3 style="font-size:22px">Une vision panafricaine</h3><p class="mut" style="margin:8px 0 0">Qui nous sommes et où va BAMM →</p></a>
-</div></div>
-<div class="w mut" style="padding-top:28px;padding-bottom:36px;font-size:13px">Sources : GSMA (2025) · TechNext24 (2024) · Tech With Africa (2026) · Lundberg &amp; Lee (2017), SHAP, NeurIPS. · BAMM · AI4Youth · Lomé 2026</div>
+<!-- ============================================================ INCLUSION -->
+<section class="section">
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <div class="eyebrow">Conçu pour les non-lettrés</div>
+      <h2>Protéger quelqu'un qui ne sait pas lire.</h2>
+      <p class="lead" style="margin-top:18px">La langue est choisie une seule fois. Ensuite tout passe par la voix, la couleur et de grandes icônes : rouge = danger, vert = sûr. Pas besoin de comprendre ce qu'est un code USSD.</p>
+    </div>
+    <div class="lang-chips reveal">
+      <div class="lang-chip">Fɔ̀ngbè<small>Fon · sud du Bénin</small></div>
+      <div class="lang-chip">Yorùbá<small>Yoruba · sud-est</small></div>
+      <div class="lang-chip">Dendi<small>Dendi · nord</small></div>
+      <div class="lang-chip">Baatɔnum<small>Bariba · nord-est</small></div>
+      <div class="lang-chip">Français<small>Langue officielle</small></div>
+    </div>
+  </div>
+</section>
 
-</div>
-</template>
-<script src="assets/runtime.js"></script>
+<!-- ============================================================ EXPLORE -->
+<section class="section tint">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Explorer</div>
+      <h2>La science derrière le bouclier.</h2>
+    </div>
+    <div class="grid">
+      <a class="card reveal" href="ia.html"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>4 modèles comparés</h3><p>Régression logistique, Random Forest, XGBoost et réseau de neurones. Le recall prime. →</p></a>
+      <a class="card reveal" href="demo.html"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><h3>La démo en 6 étapes</h3><p>Du choix de la langue au signalement, l'arnaque vue de l'intérieur. →</p></a>
+      <a class="card reveal" href="business.html"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div><h3>Un modèle qui tient</h3><p>Gratuit pour l'utilisateur, financé par ceux qui veulent réduire la fraude. →</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Installez BAMM sur votre téléphone.</h2>
+        <p>Application Android gratuite · <span data-apk="size"></span> · version <span data-apk="version"></span>. Le modèle d'IA fonctionne sans connexion Internet.</p>
+      </div>
+      <a class="btn btn-glow btn-lg" href="telecharger.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg>Télécharger l'APK</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-footer></footer>
+<script src="assets/site.js"></script>
 <script>
-
-class Component extends DCLogic {
-constructor(props) { super(props); this.state = { step: 0, lang: 'fon' }; }
-renderVals() {
-const on = 'background:#067047;color:#fff;border-color:#067047';
-const T = { fon: "Alɔ elɔ nyí ajotɔ́ sín alɔ wɛ. Ma ná mɛdɛbǔ hùn towe ó.", fr: "Cet appel vient d'un arnaqueur. Ne donne ton code à personne.", yo: "[Alerte en yoruba à insérer]", de: "[Alerte en dendi à insérer]", ba: "[Alerte en bariba à insérer]" };
-const langs = [['fon','Fon'],['yo','Yoruba'],['de','Dendi'],['ba','Bariba'],['fr','Français']].map(([id,label]) => ({ label, style: this.state.lang === id ? on : '', pick: () => this.setState({ lang: id, step: 1 }) }));
-return { langs, show0: this.state.step === 0, show1: this.state.step === 1, alertText: T[this.state.lang], typeCode: () => this.setState({ step: 1 }), replay: () => this.setState({ step: 0 }) };
-}
-}
-
-boot(Component);
+(function () {
+  const ALERT = {
+    fon: ['Fɔ̀ngbè', 'Klɛ́nu elɔ na sɛ́ akwɛ́ towe yì. Ma blo ó.', 'Alerte vocale en fon'],
+    yo: ['Yorùbá', 'Ce code va transférer ton argent. Ne le fais pas.', 'Voix yoruba en cours d\'enregistrement · alerte en français'],
+    de: ['Dendi', 'Ce code va transférer ton argent. Ne le fais pas.', 'Voix dendi en cours d\'enregistrement · alerte en français'],
+    ba: ['Baatɔnum', 'Ce code va transférer ton argent. Ne le fais pas.', 'Voix bariba en cours d\'enregistrement · alerte en français'],
+    fr: ['Français', 'Ce code va transférer ton argent. Ne le fais pas.', 'Alerte vocale en français'],
+  };
+  let lang = 'fon';
+  const box = document.getElementById('hero-langs');
+  const call = document.getElementById('h-call'), block = document.getElementById('h-block');
+  function show(blocked) {
+    call.classList.toggle('on', !blocked);
+    block.classList.toggle('on', blocked);
+    document.getElementById('h-text').textContent = ALERT[lang][1];
+    document.getElementById('h-note').textContent = ALERT[lang][2];
+    box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.l === lang));
+  }
+  Object.keys(ALERT).forEach((k) => {
+    const b = document.createElement('button');
+    b.className = 'pill'; b.dataset.l = k; b.textContent = ALERT[k][0];
+    b.addEventListener('click', () => { lang = k; show(true); });
+    box.appendChild(b);
+  });
+  document.getElementById('h-type').addEventListener('click', () => show(true));
+  document.getElementById('h-replay').addEventListener('click', () => show(false));
+  show(false);
+})();
 </script>
 </body>
 </html>
