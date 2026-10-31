@@ -1,14 +1,10 @@
 /* BAMM — en-tête, pied de page et animations communs à toutes les pages */
 (function () {
   const APK = {
-    url: 'downloads/BAMM-1.0.1.apk',
-    version: '1.0.1',
-    size: '10,0 Mo',
-    sha256: '875a3d36a9369a43b33e350c4406e9bf3bea062d0e0c29fd266dca6818e3d633',
-    // Édition avec service d'accessibilité (blocage dans le clavier) : bloquée par
-    // Play Protect si elle est installée depuis un navigateur, à installer par ADB.
-    completeUrl: 'downloads/BAMM-1.0.1-complete.apk',
-    completeSha256: '4111a03126468e2426ea9ac92b4f6f21012ec110ea3cfd9e4df5f47a43386d55',
+    url: 'downloads/BAMM-0.1.0.apk',
+    version: '0.1.0',
+    size: '27,2 Mo',
+    sha256: '1d86598f1046af98af2f7a060d32840f6d5fcccdd5e5378a76450d231bce8226',
   };
   window.BAMM_APK = APK;
 
@@ -92,7 +88,6 @@
   document.querySelectorAll('[data-apk]').forEach((el) => {
     const k = el.dataset.apk;
     if (k === 'href') el.setAttribute('href', APK.url);
-    else if (k === 'completeHref') el.setAttribute('href', APK.completeUrl);
     else el.textContent = APK[k];
   });
 })();
